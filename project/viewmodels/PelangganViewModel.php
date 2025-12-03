@@ -1,26 +1,41 @@
 <?php
-// viewmodels/PelangganViewModel.php
 require_once 'models/Pelanggan.php';
+
 class PelangganViewModel
 {
-    private $pelanggan;
+    private $pelangganModel;
+
+    public $id;
+    public $nama_pelanggan;
+    public $kontak;
+
     public function __construct() {
-        $this->pelanggan = new Pelanggan();
+        $this->pelangganModel = new Pelanggan();
     }
-    // ... (getPelangganList, getPelangganById, addPelanggan, updatePelanggan, deletePelanggan methods)
+
+    public function bind($data) {
+        $this->id = isset($data['id']) ? $data['id'] : null;
+        $this->nama_pelanggan = isset($data['nama_pelanggan']) ? $data['nama_pelanggan'] : '';
+        $this->kontak = isset($data['kontak']) ? $data['kontak'] : '';
+    }
+
+    // Logic Save (Create/Update otomatis berdasarkan ID)
+    public function save() {
+        if (!empty($this->id)) {
+            return $this->pelangganModel->update($this->id, $this->nama_pelanggan, $this->kontak);
+        } else {
+            return $this->pelangganModel->create($this->nama_pelanggan, $this->kontak);
+        }
+    }
+
+    // --- Fungsi Read & Delete ---
     public function getPelangganList() {
-        return $this->pelanggan->getAll();
+        return $this->pelangganModel->getAll();
     }
     public function getPelangganById($id) {
-        return $this->pelanggan->getById($id);
-    }
-    public function addPelanggan($nama_pelanggan, $kontak) {
-        return $this->pelanggan->create($nama_pelanggan, $kontak);
-    }
-    public function updatePelanggan($id, $nama_pelanggan, $kontak) {
-        return $this->pelanggan->update($id, $nama_pelanggan, $kontak);
+        return $this->pelangganModel->getById($id);
     }
     public function deletePelanggan($id) {
-        return $this->pelanggan->delete($id);
+        return $this->pelangganModel->delete($id);
     }
 }

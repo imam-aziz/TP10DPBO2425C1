@@ -1,26 +1,40 @@
 <?php
-// viewmodels/MekanikViewModel.php
 require_once 'models/Mekanik.php';
+
 class MekanikViewModel
 {
-    private $mekanik;
+    private $mekanikModel;
+
+    public $id;
+    public $nama_mekanik;
+    public $spesialisasi;
+
     public function __construct() {
-        $this->mekanik = new Mekanik();
+        $this->mekanikModel = new Mekanik();
     }
-    // ... (getMekanikList, getMekanikById, addMekanik, updateMekanik, deleteMekanik methods)
+
+    public function bind($data) {
+        $this->id = isset($data['id']) ? $data['id'] : null;
+        $this->nama_mekanik = isset($data['nama_mekanik']) ? $data['nama_mekanik'] : '';
+        $this->spesialisasi = isset($data['spesialisasi']) ? $data['spesialisasi'] : '';
+    }
+
+    public function save() {
+        if (!empty($this->id)) {
+            return $this->mekanikModel->update($this->id, $this->nama_mekanik, $this->spesialisasi);
+        } else {
+            return $this->mekanikModel->create($this->nama_mekanik, $this->spesialisasi);
+        }
+    }
+
+    // --- Fungsi Read & Delete ---
     public function getMekanikList() {
-        return $this->mekanik->getAll();
+        return $this->mekanikModel->getAll();
     }
     public function getMekanikById($id) {
-        return $this->mekanik->getById($id);
-    }
-    public function addMekanik($nama_mekanik, $spesialisasi) {
-        return $this->mekanik->create($nama_mekanik, $spesialisasi);
-    }
-    public function updateMekanik($id, $nama_mekanik, $spesialisasi) {
-        return $this->mekanik->update($id, $nama_mekanik, $spesialisasi);
+        return $this->mekanikModel->getById($id);
     }
     public function deleteMekanik($id) {
-        return $this->mekanik->delete($id);
+        return $this->mekanikModel->delete($id);
     }
 }
