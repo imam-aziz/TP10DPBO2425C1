@@ -1,0 +1,126 @@
+/* --- VARIABLE WARNA --- */
+:root {
+    --bg-white: #ffffff;       /* Background Utama */
+    --primary-red: #ed1d24;    /* Header, Tombol, Garis Aksen */
+    --dark-black: #241f21;     /* Teks Utama, Footer, Navbar */
+    --mid-gray: #57595b;       /* Teks Sekunder, Border Tabel */
+    --light-gray: #f4f4f4;     /* Hover effect (opsional) */
+}
+
+/* --- DASAR --- */
+body {
+    background-color: var(--bg-white);
+    color: var(--dark-black);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+/* --- HEADER / NAVBAR --- */
+header {
+    background-color: var(--dark-black);
+    padding: 1rem 2rem;
+    border-bottom: 5px solid var(--primary-red); /* Garis Merah di bawah header */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    color: var(--bg-white);
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+header span {
+    color: var(--primary-red); /* Aksen Merah pada teks logo */
+    font-weight: bold;
+}
+
+/* --- KONTAINER --- */
+.container {
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+/* --- JUDUL HALAMAN --- */
+h2 {
+    color: var(--primary-red);
+    border-left: 5px solid var(--dark-black); /* Variasi garis samping */
+    padding-left: 10px;
+    margin-bottom: 20px;
+}
+
+/* --- TABEL (STYLE UTAMA) --- */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* Header Tabel: Merah Solid */
+thead tr {
+    background-color: var(--primary-red);
+    color: var(--bg-white);
+    text-align: left;
+}
+
+th, td {
+    padding: 12px 15px;
+    border-bottom: 1px solid var(--mid-gray); /* Garis pemisah abu-abu */
+}
+
+/* Baris Tabel */
+tbody tr {
+    background-color: var(--bg-white);
+}
+
+/* Efek Hover Baris */
+tbody tr:hover {
+    background-color: rgba(237, 29, 36, 0.05); /* Merah sangat tipis saat hover */
+}
+
+/* Warna Teks Spesifik di Tabel */
+td {
+    color: var(--dark-black);
+}
+
+/* Kolom Biaya ditebalkan */
+td.biaya {
+    font-weight: bold;
+    color: var(--dark-black);
+}
+
+/* --- TOMBOL (BUTTONS) --- */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.btn-primary {
+    background-color: var(--primary-red);
+    color: var(--bg-white);
+}
+
+.btn-primary:hover {
+    background-color: var(--dark-black); /* Berubah jadi hitam saat hover */
+}
+
+/* --- FOOTER --- */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: var(--dark-black);
+    color: var(--mid-gray);
+    margin-top: 50px;
+    font-size: 0.9rem;
+}
